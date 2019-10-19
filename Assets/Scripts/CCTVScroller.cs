@@ -6,7 +6,6 @@ public class CCTVScroller : Scroller
 {
     Vector3 direction = Vector3.left;
     // public float time
-    EnemyPositions e = EnemyPositions.GetEnemyPosition();
 
     void LateUpdate () {
         float camPos = cam.transform.position.x;
