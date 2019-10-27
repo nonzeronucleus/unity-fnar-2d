@@ -7,6 +7,7 @@ public class BaseState : Reducer
     public BaseState() {
         Debug.Log("Creating base state");
 
-        AddChildReducer("Enemy Position", new EnemyPosition());
+        AddChildReducer(new EnemyPosition());
+        AddChildReducer(new TimedEvents());
     }
 }

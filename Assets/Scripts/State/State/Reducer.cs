@@ -22,7 +22,11 @@ public abstract class Reducer
 
     private Dictionary<string, Reducer> children = new Dictionary<string, Reducer>();
 
-    public void AddChildReducer(string name, Reducer child) {
+    public void AddChildReducer(Reducer child) {
+        AddChildReducer(child, child.GetType().ToString());
+    }
+
+    public void AddChildReducer(Reducer child, string name) {
         children.Add(name, child);
     }
 }

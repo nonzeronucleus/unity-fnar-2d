@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
         count+=Time.deltaTime;
 
         if(count> nextTick) {
-            gameDataManager.Tick((int)Math.Round(count/tickInterval));
+            gameDataManager.Tick();
 
             nextTick = count + tickInterval;
         }

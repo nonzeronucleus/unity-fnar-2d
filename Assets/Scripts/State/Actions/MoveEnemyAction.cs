@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Action
+public class MoveEnemyAction : Action
 {
-    public Action() {
+    public MoveEnemyAction() {
     }
 }

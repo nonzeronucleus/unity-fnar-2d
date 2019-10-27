@@ -12,6 +12,10 @@ public class EnemyPosition : Reducer
     }
 
     public override void handleAction(Action action) {
-        Debug.Log("Enemy position handle action "+action.getActionType());
+        if (action.GetType() == typeof(MoveEnemyAction)) {
+            // MoveEnemyAction a = (MoveEnemyAction)action;
+
+            Debug.Log("Enemy position handle action");
+        }
     }
 }

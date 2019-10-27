@@ -7,7 +7,9 @@ public class GameDataManager
     public static GameDataManager GetInstance () {
         if (self == null) {
             self = new GameDataManager();
+            self.init();
         }
+
         return self;
     }
 
@@ -17,10 +19,18 @@ public class GameDataManager
     Reducer state = new BaseState();
 
     EnemyPositions enemyPositions = new EnemyPositions();
+    int _currentTick = 0;
 
     public GameDataManager() {
+    }
+
+    public void init() {
         data.Add(enemyPositions);
+
         state.init();
+        Action a = new AddTimedAction(new MoveEnemyAction(), 5);
+
+        state.handleAction(a);
 
         data.ForEach(item => {
             item.Start();
@@ -31,15 +41,23 @@ public class GameDataManager
         return enemyPositions;
     }
 
+    public void handleAction(Action action){
+        // state.handleAction(action);
+    }
+
+    public int GetCurrentTick() {
+        return _currentTick;
+    }
 
 
+    public void Tick() {
+        _currentTick++;
 
-    public void Tick(int tick) {
-        Action t = new Action("Test", null);
+    //     Action a = new TickAction(_currentTick);
 
-        state.handleAction(t);
+    //     handleAction(a);
 
-        // Debug.Log(tick);
+    //     // Debug.Log(tick);
         data.ForEach(item => {
             item.Tick();
         });

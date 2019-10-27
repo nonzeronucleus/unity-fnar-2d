@@ -19,8 +19,6 @@ public class EnemyPositions : GameData
         int roomIdx = Random.Range(0, numRooms);
 
         enemyLocations[Enemy.Porkie] = (Location)roomIdx;
-
-        Debug.Log(roomIdx);
     }
 
     public List<Enemy> GetEnemiesInRoom(Location location) {
