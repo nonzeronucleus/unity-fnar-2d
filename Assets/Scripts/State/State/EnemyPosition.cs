@@ -12,10 +12,18 @@ public class EnemyPosition : Reducer
     }
 
     public override void handleAction(Action action) {
-        if (action.GetType() == typeof(MoveEnemyAction)) {
-            // MoveEnemyAction a = (MoveEnemyAction)action;
+        if (action is EnemyMoved) {
+            EnemyMoved a = (EnemyMoved)action;
 
-            Debug.Log("Enemy position handle action");
+            enemyLocations[a.GetEnemy()] = a.GetLocation();
+
+            Debug.Log("Enemy position handle action "+a.GetEnemy()+","+a.GetLocation());
+
+            GameDataManager.GetInstance().handleAction(new AddTimedAction(new MoveEnemyThunk(), 5));
         }
+    }
+
+    public Dictionary<Enemy, Location> GetEnemyLocations() {
+        return enemyLocations;
     }
 }

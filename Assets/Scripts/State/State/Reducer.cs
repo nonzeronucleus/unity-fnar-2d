@@ -11,7 +11,11 @@ public abstract class Reducer
     }
 
     public virtual void handleAction(Action action) {
-        foreach(KeyValuePair<string, Reducer> child in children) {
+        if (action is Thunk) {
+            Thunk thunk=(Thunk)action;
+            thunk.execute(GameDataManager.GetInstance());
+        }
+        else foreach(KeyValuePair<string, Reducer> child in children) {
             child.Value.handleAction(action);
         }
     }

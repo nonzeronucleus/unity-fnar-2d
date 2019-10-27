@@ -21,16 +21,16 @@ public class EnemyPositions : GameData
         enemyLocations[Enemy.Porkie] = (Location)roomIdx;
     }
 
-    public List<Enemy> GetEnemiesInRoom(Location location) {
+    // public List<Enemy> GetEnemiesInRoom(Location location) {
 
-        List<Enemy> enemies = new List<Enemy>();
+    //     List<Enemy> enemies = new List<Enemy>();
 
-        foreach(KeyValuePair<Enemy, Location> enemy in enemyLocations) {
-            if (enemy.Value == location) {
-                enemies.Add(enemy.Key);
-            }
-        }
+    //     foreach(KeyValuePair<Enemy, Location> enemy in enemyLocations) {
+    //         if (enemy.Value == location) {
+    //             enemies.Add(enemy.Key);
+    //         }
+    //     }
 
-        return enemies;
-    }
+    //     return enemies;
+    // }
 }

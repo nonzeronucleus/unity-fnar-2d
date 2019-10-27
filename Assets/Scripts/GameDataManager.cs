@@ -17,6 +17,7 @@ public class GameDataManager
 
     public List<GameData> data=new List<GameData>();
     Reducer state = new BaseState();
+    Selectors _selectors;
 
     EnemyPositions enemyPositions = new EnemyPositions();
     int _currentTick = 0;
@@ -28,9 +29,11 @@ public class GameDataManager
         data.Add(enemyPositions);
 
         state.init();
-        Action a = new AddTimedAction(new MoveEnemyAction(), 5);
+        _selectors = new Selectors(state);
 
-        state.handleAction(a);
+        Action a = new AddTimedAction(new MoveEnemyThunk(), 5);
+
+        handleAction(a);
 
         data.ForEach(item => {
             item.Start();
@@ -42,24 +45,27 @@ public class GameDataManager
     }
 
     public void handleAction(Action action){
-        // state.handleAction(action);
+        state.handleAction(action);
     }
 
     public int GetCurrentTick() {
         return _currentTick;
     }
 
-
     public void Tick() {
         _currentTick++;
 
-    //     Action a = new TickAction(_currentTick);
+        Action a = new TickAction(_currentTick);
 
-    //     handleAction(a);
+        handleAction(a);
 
     //     // Debug.Log(tick);
         data.ForEach(item => {
             item.Tick();
         });
+    }
+
+    public Selectors GetSelectors() {
+        return _selectors;
     }
 }

@@ -18,7 +18,7 @@ public class CharacterDisplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        List<Enemy> enemiesInRoom = gameDataManager.getEnemyPositions().GetEnemiesInRoom(location);
+        List<Enemy> enemiesInRoom = gameDataManager.GetSelectors().GetEnemiesInRoom(location);
 
         // GetComponent<Renderer>().enabled=false;
 
