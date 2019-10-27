@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameData
+public abstract class GameData
 {
-    public static GameData GetInstance () {
-        if (self == null) {
-            self = new GameData();
-        }
+    public virtual void Start() {}
 
-        return self;
-    }
-
-    static GameData self;
+   public abstract void Tick();
 }
