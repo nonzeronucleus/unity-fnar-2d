@@ -8,7 +8,6 @@ public class EnemyPosition : Reducer
 
     public override void init() {
         enemyLocations = new Dictionary<Enemy, Location>();
-        Debug.Log("Enemy position handle init ");
     }
 
     public override void handleAction(Action action) {
@@ -16,8 +15,6 @@ public class EnemyPosition : Reducer
             EnemyMoved a = (EnemyMoved)action;
 
             enemyLocations[a.GetEnemy()] = a.GetLocation();
-
-            Debug.Log("Enemy position handle action "+a.GetEnemy()+","+a.GetLocation());
 
             GameDataManager.GetInstance().handleAction(new AddTimedAction(new MoveEnemyThunk(), 5));
         }

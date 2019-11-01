@@ -19,7 +19,7 @@ public class TimedEvents : Reducer {
             int currentTick = manager.GetCurrentTick();
             int tick = ticksUntil + currentTick;
 
-            // Debug.Log("Timed events handle add "+a.GetAction() + " at "+ tick);
+            // ("Timed events handle add "+a.GetAction() + " at "+ tick);
 
             List<Action> actionsAtTime;
 
@@ -36,7 +36,6 @@ public class TimedEvents : Reducer {
         else if (action.GetType() == typeof(TickAction)) {
             TickAction a = (TickAction)action;
             GameDataManager manager = GameDataManager.GetInstance();
-            // Debug.Log("Timed events handle tick "+a.GetTick());
 
             if (_actions.ContainsKey(a.GetTick())){
                 List<Action> actionsAtTime= _actions[a.GetTick()];

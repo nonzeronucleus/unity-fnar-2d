@@ -10,6 +10,10 @@ public abstract class Reducer
         }
     }
 
+    public virtual string GetReducerName() {
+        return null;
+    }
+
     public virtual void handleAction(Action action) {
         if (action is Thunk) {
             Thunk thunk=(Thunk)action;
@@ -27,10 +31,15 @@ public abstract class Reducer
     private Dictionary<string, Reducer> children = new Dictionary<string, Reducer>();
 
     public void AddChildReducer(Reducer child) {
-        AddChildReducer(child, child.GetType().ToString());
+        string reducerName = child.GetReducerName();
+        if (reducerName == null) {
+            reducerName = child.GetType().ToString();
+        }
+        AddChildReducer(child, reducerName);
     }
 
     public void AddChildReducer(Reducer child, string name) {
+        Debug.Log("Adding Reducer "+name);
         children.Add(name, child);
     }
 }

@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class DoorOpener : MonoBehaviour
 {
+    public  static GameDataManager gameDataManager = GameDataManager.GetInstance();
+
     public Sprite OpenDoor;
     public Sprite ClosedDoor;
     public bool isOpen = true;
+    public Door _door;
 
     void OnMouseDown()
     {
-        isOpen =! isOpen;
+        GameDataManager.GetInstance().handleAction(new HandleDoorToggle(_door));
+        // isOpen =! isOpen;
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = isOpen ? OpenDoor : ClosedDoor;
+        bool isDoorOpen = gameDataManager.GetSelectors().isDoorOpen(_door);
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = isDoorOpen ? OpenDoor : ClosedDoor;
     }
 }

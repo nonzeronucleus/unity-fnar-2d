@@ -7,7 +7,6 @@ public class ShowCCTV : MonoBehaviour
 {
     void OnMouseDown()
     {
-        Debug.Log("Clicked");
-        SceneManager.LoadScene("Corridor", LoadSceneMode.Single);
+        SceneManager.LoadScene("CorridorRight", LoadSceneMode.Single);
     }
 }

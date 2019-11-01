@@ -97,6 +97,7 @@ MonoBehaviour:
   OpenDoor: {fileID: 21300000, guid: e2c3989ec0b4a4e3881d7488320165b2, type: 3}
   ClosedDoor: {fileID: 21300000, guid: 6e3fe5f83d7cd471fae608125a8d8c19, type: 3}
   isOpen: 1
+  _door: 1
 --- !u!61 &3055256103627164582
 BoxCollider2D:
   m_ObjectHideFlags: 0

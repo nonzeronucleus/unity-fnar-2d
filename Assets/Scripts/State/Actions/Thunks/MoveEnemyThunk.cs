@@ -10,6 +10,5 @@ public class MoveEnemyThunk : Thunk
 
 
         manager.handleAction(new EnemyMoved(Enemy.Porkie,(Location)roomIdx));
-//        Debug.Log("Executing Move Enemy Thunk");
     }
 }

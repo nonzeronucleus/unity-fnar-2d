@@ -7,7 +7,6 @@ public class ShowOffice : MonoBehaviour
 {
     void OnMouseDown()
     {
-        Debug.Log("Clicked");
         SceneManager.LoadScene("Office", LoadSceneMode.Single);
     }
 }
