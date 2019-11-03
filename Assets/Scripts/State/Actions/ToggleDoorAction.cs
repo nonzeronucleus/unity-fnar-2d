@@ -1,4 +1,4 @@
-public class ToggleDoorAction : Action
+public class ToggleDoorAction : ReduxAction
 {
     Door _door;
     bool _isOpen;

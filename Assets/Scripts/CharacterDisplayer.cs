@@ -1,29 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStories;
 
 public class CharacterDisplayer : MonoBehaviour
 {
-    public  static GameDataManager gameDataManager = GameDataManager.GetInstance();
-    public string roomName;
-    public Component PorkieImg;
-    Location location;
+     public StoriesHelper storiesHelper;
 
-    // Start is called before the first frame update
+    public  static GameDataManager gameDataManager = GameDataManager.GetInstance();
+    public Location location;
+    public Enemy enemy;
+
     void Start()
     {
-        location = (Location)System.Enum.Parse(typeof(Location), roomName);
+        if(GetComponent<Renderer>() == null) {
+            return;
+        }
+
+        storiesHelper.Setup(gameObject, MapStoriesToProps);
     }
 
-    // Update is called once per frame
-    void Update()
+	void MapStoriesToProps(Story story)
     {
-        List<Enemy> enemiesInRoom = gameDataManager.GetSelectors().GetEnemiesInRoom(location);
+        Dictionary<Enemy, Location> characterLocations= story.Get<EnemyPositionStory>().characterLocations;
 
-        // GetComponent<Renderer>().enabled=false;
-
-        PorkieImg.GetComponent<Renderer>().enabled=enemiesInRoom.Contains(Enemy.Porkie);
-
-        // gameDataManager.
+        GetComponent<Renderer>().enabled=characterLocations[enemy]==location;
     }
 }

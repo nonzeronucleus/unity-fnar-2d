@@ -10,13 +10,13 @@ public class EnemyPosition : Reducer
         enemyLocations = new Dictionary<Enemy, Location>();
     }
 
-    public override void handleAction(Action action) {
+    public override void handleAction(ReduxAction action) {
         if (action is EnemyMoved) {
             EnemyMoved a = (EnemyMoved)action;
 
             enemyLocations[a.GetEnemy()] = a.GetLocation();
 
-            GameDataManager.GetInstance().handleAction(new AddTimedAction(new MoveEnemyThunk(), 5));
+            //_manager.handleAction(new AddTimedAction(new MoveEnemyThunk(), 5));
         }
     }
 

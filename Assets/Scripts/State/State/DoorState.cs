@@ -19,12 +19,12 @@ public class DoorState : Reducer
         return _isOpen;
     }
 
-    public override void handleAction(Action action) {
+    public override void handleAction(ReduxAction action) {
         if (action is ToggleDoorAction) {
             ToggleDoorAction a = (ToggleDoorAction)action;
 
             if (a.GetDoor() == _door) {
-                Debug.Log("Toggling "+_door);
+                // Debug.Log("Toggling "+_door);
                 _isOpen = a.isOpen();
             }
         }

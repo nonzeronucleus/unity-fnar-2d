@@ -12,7 +12,7 @@ public class SelectedCamera : Reducer
         _selectedCamera = Location.CorridorRight;
     }
 
-    public override void handleAction(Action action) {
+    public override void handleAction(ReduxAction action) {
         if (action is RoomSelected) {
             RoomSelected a = (RoomSelected)action;
 

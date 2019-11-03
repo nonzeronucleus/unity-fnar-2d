@@ -27,12 +27,12 @@ public class GameDataManager
         state.init();
         _selectors = new Selectors(state);
 
-        Action a = new AddTimedAction(new MoveEnemyThunk(), 5);
+        ReduxAction a = new AddTimedAction(new MoveEnemyThunk(), 5);
 
         handleAction(a);
     }
 
-    public void handleAction(Action action){
+    public void handleAction(ReduxAction action){
         state.handleAction(action);
     }
 
@@ -43,7 +43,7 @@ public class GameDataManager
     public void Tick() {
         _currentTick++;
 
-        Action a = new TickAction(_currentTick);
+        ReduxAction a = new TickAction(_currentTick);
 
         handleAction(a);
     }

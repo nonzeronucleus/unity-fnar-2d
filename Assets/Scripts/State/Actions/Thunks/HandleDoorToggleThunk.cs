@@ -10,7 +10,9 @@ public class HandleDoorToggle : Thunk
     }
 
     public override void execute(GameDataManager manager){
-        manager.handleAction(new ToggleDoorAction(_door,false));
+        bool isDoorCurrentlyOpen = manager.GetSelectors().isDoorOpen(_door);
+
+        manager.handleAction(new ToggleDoorAction(_door,!isDoorCurrentlyOpen));
 
         // Debug.Log("Executing HandleDoorToggle "+_door);
     }

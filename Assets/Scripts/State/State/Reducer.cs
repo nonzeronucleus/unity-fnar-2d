@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Reducer
 {
+    // protected GameDataManager _manager = GameDataManager.GetInstance();
+
     public virtual void init() {
         foreach(KeyValuePair<string, Reducer> child in children) {
             child.Value.init();
@@ -14,7 +16,7 @@ public abstract class Reducer
         return null;
     }
 
-    public virtual void handleAction(Action action) {
+    public virtual void handleAction(ReduxAction action) {
         if (action is Thunk) {
             Thunk thunk=(Thunk)action;
             thunk.execute(GameDataManager.GetInstance());
@@ -39,7 +41,7 @@ public abstract class Reducer
     }
 
     public void AddChildReducer(Reducer child, string name) {
-        Debug.Log("Adding Reducer "+name);
+        // Debug.Log("Adding Reducer "+name);
         children.Add(name, child);
     }
 }

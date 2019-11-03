@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TickAction : Action
+public class TickAction : ReduxAction
 {
     int _tick;
 

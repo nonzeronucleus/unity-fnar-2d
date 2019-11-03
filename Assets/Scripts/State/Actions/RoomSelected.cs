@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomSelected : Action
+public class RoomSelected : ReduxAction
 {
     Location _room;
 

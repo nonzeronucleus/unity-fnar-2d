@@ -94,6 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3526447a299948f18ab12a456adca70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   OpenDoor: {fileID: 21300000, guid: e2c3989ec0b4a4e3881d7488320165b2, type: 3}
   ClosedDoor: {fileID: 21300000, guid: 6e3fe5f83d7cd471fae608125a8d8c19, type: 3}
   isOpen: 1
