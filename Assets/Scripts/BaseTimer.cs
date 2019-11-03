@@ -6,13 +6,17 @@ using UnityStories;
 public class BaseTimer : MonoBehaviour
 {
     public StoriesHelper storiesHelper;
+    public static bool created = false;
     static float count;
     static float nextTick=0;
     [SerializeField] public const float tickInterval = 2;
 
     void Start()
     {
-        storiesHelper.Dispatch(TimedActionsStory.AddTimedActiontFactory.Get(storiesHelper, EnemyPositionStory.MoveCharacterFactory.Get(),2, true));
+        if (!created) {
+            created = true;
+            storiesHelper.Dispatch(TimedActionsStory.AddTimedActiontFactory.Get(storiesHelper, EnemyPositionStory.MoveCharacterFactory.Get(),2, true));
+        }
     }
 
     // // Update is called once per frame

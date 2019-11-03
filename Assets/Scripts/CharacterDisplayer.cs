@@ -7,7 +7,6 @@ public class CharacterDisplayer : MonoBehaviour
 {
      public StoriesHelper storiesHelper;
 
-    public  static GameDataManager gameDataManager = GameDataManager.GetInstance();
     public Location location;
     public Enemy enemy;
 

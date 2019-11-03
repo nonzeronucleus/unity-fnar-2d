@@ -7,7 +7,6 @@ using UnityStories;
 public class DoorStory : Story
 {
     public Dictionary<Door, bool> isDoorOpen= new Dictionary<Door, bool>();
-    public int test;
 
     public override void InitStory()
     {

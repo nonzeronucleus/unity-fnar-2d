@@ -94,7 +94,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3e9d6b063cf4796b36ab39e9bd5c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   _locationName: FusionCove
+  location: 5
 --- !u!61 &936277851082308995
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -215,7 +218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3e9d6b063cf4796b36ab39e9bd5c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   _locationName: DiningRoom
+  location: 6
 --- !u!61 &936277851398607608
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -336,7 +342,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3e9d6b063cf4796b36ab39e9bd5c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   _locationName: Toilet
+  location: 8
 --- !u!61 &936277851460374838
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -545,7 +554,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3e9d6b063cf4796b36ab39e9bd5c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   _locationName: CorridorLeft
+  location: 1
 --- !u!61 &936277851745040653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -666,7 +678,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3e9d6b063cf4796b36ab39e9bd5c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   _locationName: HallLeft
+  location: 3
 --- !u!61 &936277851965558686
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -787,7 +802,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3e9d6b063cf4796b36ab39e9bd5c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   _locationName: CorridorRight
+  location: 2
 --- !u!61 &936277852013102265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -908,7 +926,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3e9d6b063cf4796b36ab39e9bd5c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   _locationName: HallRight
+  location: 4
 --- !u!61 &936277852184972866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1029,7 +1050,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3e9d6b063cf4796b36ab39e9bd5c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   _locationName: Kitchen
+  location: 7
 --- !u!61 &936277852205458802
 BoxCollider2D:
   m_ObjectHideFlags: 0

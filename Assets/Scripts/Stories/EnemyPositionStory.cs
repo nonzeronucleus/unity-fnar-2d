@@ -38,7 +38,7 @@ public class EnemyPositionStory : Story
 
             story.characterLocations[Enemy.Porkie]=(Location)roomIdx;
 
-            Debug.Log("Moving to "+(Location)roomIdx);
+            // Debug.Log("Moving to "+(Location)roomIdx);
         }
     }
 

@@ -29,6 +29,8 @@ public class TimedActionsStory : Story
 
 
     public void AddActionAtTick(int tick, TimeableAction actionAtTick) {
+        Debug.Log("Add action at "+tick);
+
         List<TimeableAction> actionsAtTick;
 
         if (actions.ContainsKey(tick)){
@@ -46,6 +48,8 @@ public class TimedActionsStory : Story
     {
         public override void Action(TimedActionsStory story, StoriesHelper storiesHelper, StoryAction action, int ticksUntil, bool repeat = false)
         {
+            Debug.Log("AddAction "+story.currentTick);
+
             int tick = ticksUntil + story.currentTick;
 
             story.AddActionAtTick(tick, new TimeableAction(action, repeat ? ticksUntil : 0));
@@ -59,6 +63,7 @@ public class TimedActionsStory : Story
         public override void Action(TimedActionsStory story)
         {
             story.currentTick++;
+            Debug.Log("Timed Action "+story.currentTick);
 
             if (story.actions.ContainsKey(story.currentTick)){
                 List<TimeableAction> actionsAtTick = story.actions[story.currentTick];
