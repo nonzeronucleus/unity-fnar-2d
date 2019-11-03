@@ -17,4 +17,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FusionCove.unity
     guid: 97819b759f29840688689517fd28b5ce
+  - enabled: 1
+    path: Assets/Scenes/CorridorLeft.unity
+    guid: 008b87769b8644f189d8317b5d247214
+  - enabled: 1
+    path: Assets/Scenes/DiningRoom.unity
+    guid: b2510980b917b4d42a7bc34cf434a835
+  - enabled: 1
+    path: Assets/Scenes/HallLeft.unity
+    guid: 1e54893d848714353accac38f2ebfa4c
+  - enabled: 1
+    path: Assets/Scenes/HallRight.unity
+    guid: d6491c73551614e3fa68911e2241f4cc
+  - enabled: 1
+    path: Assets/Scenes/Kitchen.unity
+    guid: 459546b05486c47fca3fe3226f0b85da
+  - enabled: 1
+    path: Assets/Scenes/Toilet.unity
+    guid: ccbef780375cd4d3b8a22c4506afce7e
   m_configObjects: {}

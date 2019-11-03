@@ -46,7 +46,7 @@ namespace UnityStories
             {
                 detectOnDestroy = detector;
             }
-            else 
+            else
             {
                 detectOnDestroy = gameObject.AddComponent<DetectOnDestroy>();
             }

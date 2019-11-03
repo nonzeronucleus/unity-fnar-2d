@@ -7,7 +7,6 @@ using UnityStories;
 public class EnemyPositionStory : Story
 {
     public Dictionary<Enemy, Location> characterLocations= new Dictionary<Enemy, Location>();
-    public int test = 0;
 
     public override void InitStory()
     {
@@ -31,14 +30,19 @@ public class EnemyPositionStory : Story
     {
         public override void Action(EnemyPositionStory story)
         {
-            int numRooms = System.Enum.GetNames(typeof(Location)).Length;
+            DoorStory doorStory = (DoorStory)BaseTimer.GetStory("DoorStory");
+            Enemy enemyToMove = Enemy.Porkie;
+            Location currentLocation = story.characterLocations[enemyToMove];
+            List<Location> exits = doorStory.GetExits(currentLocation);
+
+            int numRooms = exits.Count;
             int roomIdx = Random.Range(0, numRooms);
 
             Dictionary<Enemy, Location> newLocations= new Dictionary<Enemy, Location>();
 
-            story.characterLocations[Enemy.Porkie]=(Location)roomIdx;
+            story.characterLocations[Enemy.Porkie]=(Location)exits[roomIdx];
 
-            // Debug.Log("Moving to "+(Location)roomIdx);
+            Debug.Log("Moving to "+story.characterLocations[Enemy.Porkie]);
         }
     }
 
