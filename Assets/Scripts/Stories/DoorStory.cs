@@ -6,11 +6,6 @@ using UnityStories;
 [CreateAssetMenu(menuName = "Unity Stories/FNAR2D/DoorStory")]
 public class DoorStory : Story
 {
-    DoorStory()
-    {
-        BaseTimer.RegisterStory("DoorStory", this);
-    }
-
     public static void DumpToConsole(object obj)
     {
         var output = JsonUtility.ToJson(obj, false);

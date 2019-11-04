@@ -13,22 +13,11 @@ public class BaseTimer : MonoBehaviour
     static Dictionary<string, Story> stories = new Dictionary<string, Story>();
 
 
-    public static void RegisterStory(string name, Story story)
-    {
-        Debug.Log("Registering "+ name);
-        stories.Add(name, story);
-    }
-
-    public static Story GetStory(string name)
-    {
-        return stories[name];
-    }
-
     void Start()
     {
         if (!created) {
             created = true;
-            storiesHelper.Dispatch(TimedActionsStory.AddTimedActiontFactory.Get(storiesHelper, EnemyPositionStory.MoveCharacterFactory.Get(),2, true));
+            storiesHelper.Dispatch(TimedActionsStory.AddTimedActiontFactory.Get(EnemyPositionStory.MoveCharacterFactory.Get(),2, true));
         }
     }
 

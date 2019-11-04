@@ -42,9 +42,9 @@ public class TimedActionsStory : Story
         actionsAtTick.Add(actionAtTick);
 }
 
-    public class AddAction : GenericAction<TimedActionsStory, StoriesHelper , StoryAction, int, bool>
+    public class AddAction : GenericAction<TimedActionsStory , StoryAction, int, bool>
     {
-        public override void Action(TimedActionsStory story, StoriesHelper storiesHelper, StoryAction action, int ticksUntil, bool repeat = false)
+        public override void Action(TimedActionsStory story, StoryAction action, int ticksUntil, bool repeat = false)
         {
             int tick = ticksUntil + story.currentTick;
 
@@ -52,12 +52,13 @@ public class TimedActionsStory : Story
         }
     }
 
-    public static GenericFactory<AddAction, TimedActionsStory, StoriesHelper, StoryAction, int, bool> AddTimedActiontFactory = new GenericFactory<AddAction, TimedActionsStory, StoriesHelper, StoryAction, int, bool>();
+    public static GenericFactory<AddAction, TimedActionsStory, StoryAction, int, bool> AddTimedActiontFactory = new GenericFactory<AddAction, TimedActionsStory, StoryAction, int, bool>();
 
     public class TickAction: GenericAction<TimedActionsStory>
     {
         public override void Action(TimedActionsStory story)
         {
+            // Debug.Log("X "+ story.storiesHelper.stories.GetStories().Get<DoorStory>());
             story.currentTick++;
             if (story.actions.ContainsKey(story.currentTick)){
                 List<TimeableAction> actionsAtTick = story.actions[story.currentTick];

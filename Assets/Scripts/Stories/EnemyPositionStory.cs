@@ -6,11 +6,18 @@ using UnityStories;
 [CreateAssetMenu(menuName = "Unity Stories/FNAR2D/EnemyPositionStory")]
 public class EnemyPositionStory : Story
 {
+    public StoriesHelper storiesHelper;
+
     public Dictionary<Enemy, Location> characterLocations= new Dictionary<Enemy, Location>();
 
     public override void InitStory()
     {
         characterLocations[Enemy.Porkie] = Location.CorridorRight;
+        characterLocations[Enemy.Ginger] = Location.CorridorRight;
+        characterLocations[Enemy.Merwing] = Location.CorridorRight;
+        characterLocations[Enemy.Minty] = Location.HallRight;
+        characterLocations[Enemy.Rainba] = Location.HallLeft;
+
     }
 
     public List<Enemy> EnemiesInLocation(Location location) {
@@ -25,26 +32,29 @@ public class EnemyPositionStory : Story
         return enemies;
     }
 
+    void MoveCharacter(Enemy enemy) {
+        Location currentLocation = characterLocations[enemy];
+        DoorStory doorStory = storiesHelper.Get<DoorStory>();
+        List<Location> exits = doorStory.GetExits(currentLocation);
 
-    public class MoveCharacter : GenericAction<EnemyPositionStory>
+        int numRooms = exits.Count;
+        int roomIdx = Random.Range(0, numRooms);
+
+        Dictionary<Enemy, Location> newLocations= new Dictionary<Enemy, Location>();
+
+        characterLocations[Enemy.Porkie]=(Location)exits[roomIdx];
+
+        Debug.Log("Moving to "+characterLocations[Enemy.Porkie]);
+    }
+
+    public class MoveCharacterAction : GenericAction<EnemyPositionStory>
     {
         public override void Action(EnemyPositionStory story)
         {
-            DoorStory doorStory = (DoorStory)BaseTimer.GetStory("DoorStory");
             Enemy enemyToMove = Enemy.Porkie;
-            Location currentLocation = story.characterLocations[enemyToMove];
-            List<Location> exits = doorStory.GetExits(currentLocation);
-
-            int numRooms = exits.Count;
-            int roomIdx = Random.Range(0, numRooms);
-
-            Dictionary<Enemy, Location> newLocations= new Dictionary<Enemy, Location>();
-
-            story.characterLocations[Enemy.Porkie]=(Location)exits[roomIdx];
-
-            Debug.Log("Moving to "+story.characterLocations[Enemy.Porkie]);
+            story.MoveCharacter(enemyToMove);
         }
     }
 
-    public static GenericFactory<MoveCharacter, EnemyPositionStory> MoveCharacterFactory = new GenericFactory<MoveCharacter, EnemyPositionStory>();
+    public static GenericFactory<MoveCharacterAction, EnemyPositionStory> MoveCharacterFactory = new GenericFactory<MoveCharacterAction, EnemyPositionStory>();
 }

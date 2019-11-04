@@ -7,11 +7,15 @@ public class CharacterDisplayer : MonoBehaviour
 {
      public StoriesHelper storiesHelper;
 
-    public Location location;
+    Location location;
     public Enemy enemy;
 
     void Start()
     {
+        GameObject screen = GameObject.Find("Screen");
+
+        location = screen.GetComponent<SceneLocation>().location;
+
         if(GetComponent<Renderer>() == null) {
             return;
         }

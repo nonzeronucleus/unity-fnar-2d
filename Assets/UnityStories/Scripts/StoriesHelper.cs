@@ -9,6 +9,11 @@ namespace UnityStories
     {
         public Stories stories;
 
+		public T Get<T>() where T : Story {
+            return stories.GetStories().Get<T>();
+        }
+
+
         private Action<Story> mapStoriesToProps;
         private Action<StoryAction> onStoryAction;
         private DetectOnDestroy detectOnDestroy;
