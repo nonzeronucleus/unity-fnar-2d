@@ -49,15 +49,14 @@ public class DoorStory : Story
     {
         addCorridorLink(Location.CorridorLeft, Location.FusionCove);
         addCorridorLink(Location.CorridorLeft, Location.CorridorRight);
-        addCorridorLink(Location.CorridorLeft, Location.FusionCove);
         addCorridorLink(Location.CorridorLeft, Location.HallLeft);
         addCorridorLink(Location.CorridorLeft, Location.DiningRoom);
         addCorridorLink(Location.CorridorRight, Location.DiningRoom);
         addCorridorLink(Location.CorridorRight, Location.HallRight);
         addCorridorLink(Location.CorridorRight, Location.Toilet);
         addCorridorLink(Location.DiningRoom, Location.Kitchen);
-        isDoorOpen[Door.Left] = false;
-        isDoorOpen[Door.Right] = false;
+        isDoorOpen[Door.Left] = true;
+        isDoorOpen[Door.Right] = true;
     }
 
 

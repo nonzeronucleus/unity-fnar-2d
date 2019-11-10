@@ -10,15 +10,29 @@ public class CCTVScroller : Scroller
     void LateUpdate () {
         float camPos = cam.transform.position.x;
 
-        if (camPos < 0-backgroundExtent) {
-            direction = Vector3.right;
-        }
-        else if (camPos > backgroundExtent) {
+        if (camPos > maxCamRight) {
             direction = Vector3.left;
         }
+        else if (camPos < minCamLeft) {
+            direction = Vector3.right;
+        }
 
-        transform.Translate(direction * Time.deltaTime);
+        cam.transform.Translate(direction * Time.deltaTime *200);
     }
+
+    void OnGUI() {
+        float camPos = cam.transform.position.x;
+
+        string msg = string.Format("x:{0}", camPos);
+
+        GUIStyle guiStyle = new GUIStyle();
+        guiStyle.fontSize = 60;
+        guiStyle.normal.textColor = Color.white;
+
+        GUI.Label(new Rect(0,0,200,200),msg, guiStyle);
+    }
+
+
 
     // Start is called before the first frame update
 

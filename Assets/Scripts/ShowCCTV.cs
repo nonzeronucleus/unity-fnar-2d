@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class ShowCCTV : MonoBehaviour
 {
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         SceneManager.LoadScene("CorridorRight", LoadSceneMode.Single);
     }
+
+    public void OnClick()
+    {
+        SceneManager.LoadScene("CorridorRight", LoadSceneMode.Single);
+    }
+
 }

@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class ShowOffice : MonoBehaviour
 {
-    void OnMouseDown()
+    public void OnMouseDown()
+    {
+        SceneManager.LoadScene("Office", LoadSceneMode.Single);
+    }
+    public void OnClick()
     {
         SceneManager.LoadScene("Office", LoadSceneMode.Single);
     }

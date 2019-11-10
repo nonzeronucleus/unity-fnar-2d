@@ -28,13 +28,13 @@ public class OfficeScroller : Scroller
         float width = Screen.width;
 
         if (x<(width/3)) {
-            scrollCamera(0-backgroundExtent);
+            scrollCamera(minCamLeft);
         }
         else if (x<(2*width/3)) {
-            scrollCamera(0);
+            scrollCamera(bgCentre);
         }
         else {
-            scrollCamera(backgroundExtent);
+            scrollCamera(maxCamRight);
         }
     }
 

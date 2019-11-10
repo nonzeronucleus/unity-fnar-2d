@@ -1,3 +1,4 @@
+using Unity;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ public class EnemyPositionStory : Story
         characterLocations[Enemy.Ginger] = Location.CorridorRight;
         characterLocations[Enemy.Merwing] = Location.CorridorRight;
         characterLocations[Enemy.Minty] = Location.HallRight;
-        characterLocations[Enemy.Rainba] = Location.HallLeft;
+        characterLocations[Enemy.Rainba] = Location.FusionCove;
 
     }
 
@@ -36,22 +37,36 @@ public class EnemyPositionStory : Story
         Location currentLocation = characterLocations[enemy];
         DoorStory doorStory = storiesHelper.Get<DoorStory>();
         List<Location> exits = doorStory.GetExits(currentLocation);
+        // string debugStr = currentLocation.ToString()+" [";
+
+
+        // foreach(Location exit in exits) {
+        //     debugStr += exit.ToString() + ",";
+        // }
+
+        // debugStr+="]";
+
+        // Debug.Log(debugStr);
 
         int numRooms = exits.Count;
         int roomIdx = Random.Range(0, numRooms);
 
         Dictionary<Enemy, Location> newLocations= new Dictionary<Enemy, Location>();
 
-        characterLocations[Enemy.Porkie]=(Location)exits[roomIdx];
+        characterLocations[enemy]=(Location)exits[roomIdx];
 
-        Debug.Log("Moving to "+characterLocations[Enemy.Porkie]);
+        // Debug.Log("Moving "+ enemy + " to "+characterLocations[enemy]);
     }
 
     public class MoveCharacterAction : GenericAction<EnemyPositionStory>
     {
         public override void Action(EnemyPositionStory story)
         {
-            Enemy enemyToMove = Enemy.Porkie;
+            int numEnemies = System.Enum.GetValues(typeof(Enemy)).Length;
+
+            int enemyIdx = Random.Range(0, numEnemies);
+
+            Enemy enemyToMove =  (Enemy)enemyIdx;
             story.MoveCharacter(enemyToMove);
         }
     }

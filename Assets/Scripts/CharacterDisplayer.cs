@@ -12,7 +12,7 @@ public class CharacterDisplayer : MonoBehaviour
 
     void Start()
     {
-        GameObject screen = GameObject.Find("Screen");
+        GameObject screen = GameObject.Find("GameScreen");
 
         location = screen.GetComponent<SceneLocation>().location;
 
