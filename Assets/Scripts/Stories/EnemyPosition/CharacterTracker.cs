@@ -1,31 +1,24 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStories;
+using UnityEngine.UI;
 
-public class CharacterDisplayer : MonoBehaviour
+public class CharacterTracker : MonoBehaviour
 {
      public StoriesHelper storiesHelper;
-
-    public Location location;
     public Enemy enemy;
-
 
     void Start()
     {
-        location = transform.parent.GetComponent<SceneLocation>().location;
-
-        if(GetComponent<Renderer>() == null) {
-            return;
-        }
-
         storiesHelper.Setup(gameObject, MapStoriesToProps);
     }
 
 	void MapStoriesToProps(Story story)
     {
         Dictionary<Enemy, Location> characterLocations= story.Get<EnemyPositionStory>().characterLocations;
+        Text text = GetComponent<Text>();
 
-        GetComponent<Renderer>().enabled=characterLocations[enemy]==location;
+        text.text = enemy.ToString() + ":" +characterLocations[enemy].ToString();
     }
 }

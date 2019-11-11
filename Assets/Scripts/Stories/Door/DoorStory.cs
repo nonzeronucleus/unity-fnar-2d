@@ -6,17 +6,10 @@ using UnityStories;
 [CreateAssetMenu(menuName = "Unity Stories/FNAR2D/DoorStory")]
 public class DoorStory : Story
 {
-    public static void DumpToConsole(object obj)
-    {
-        var output = JsonUtility.ToJson(obj, false);
-        Debug.Log(output);
-    }
-
     public Dictionary<Door, bool> isDoorOpen= new Dictionary<Door, bool>();
 
     void addCorridor(Location from, Location to)
     {
-        // corridors.Add(new Corridor(from, to));
         if (!corridors.ContainsKey(from)){
             corridors[from] = new List<Location>();
         }
@@ -35,11 +28,14 @@ public class DoorStory : Story
         try {
             List<Location> exits = new List<Location>(corridors[location]);
 
-            if(location == Location.HallLeft && isDoorOpen[Door.Left]) {
+            if(location == Location.DoorLeft && isDoorOpen[Door.Left]) {
                 exits.Add(Location.Office);
             }
-            else if(location == Location.HallRight && isDoorOpen[Door.Right]) {
+            else if(location == Location.DoorRight && isDoorOpen[Door.Right]) {
                 exits.Add(Location.Office);
+            }
+            else if(location == Location.Office) {
+                exits.Add(Location.DoorRight);
             }
 
             return exits;
@@ -62,8 +58,11 @@ public class DoorStory : Story
         addCorridorLink(Location.CorridorRight, Location.HallRight);
         addCorridorLink(Location.CorridorRight, Location.Toilet);
         addCorridorLink(Location.DiningRoom, Location.Kitchen);
+        addCorridorLink(Location.HallLeft, Location.DoorLeft);
+        addCorridorLink(Location.HallRight, Location.DoorRight);
+
         isDoorOpen[Door.Left] = false;
-        isDoorOpen[Door.Right] = false;
+        isDoorOpen[Door.Right] = true;
     }
 
 
