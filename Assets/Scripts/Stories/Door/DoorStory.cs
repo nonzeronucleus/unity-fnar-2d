@@ -6,7 +6,27 @@ using UnityStories;
 [CreateAssetMenu(menuName = "Unity Stories/FNAR2D/DoorStory")]
 public class DoorStory : Story
 {
+    public StoriesHelper storiesHelper;
+
     public Dictionary<Door, bool> isDoorOpen= new Dictionary<Door, bool>();
+    public Dictionary<Location, List<Location>> corridors = new Dictionary<Location, List<Location>>();
+
+    public override void InitStory()
+    {
+        addCorridorLink(Location.CorridorLeft, Location.FusionCove);
+        addCorridorLink(Location.CorridorLeft, Location.CorridorRight);
+        addCorridorLink(Location.CorridorLeft, Location.HallLeft);
+        addCorridorLink(Location.CorridorLeft, Location.DiningRoom);
+        addCorridorLink(Location.CorridorRight, Location.DiningRoom);
+        addCorridorLink(Location.CorridorRight, Location.HallRight);
+        addCorridorLink(Location.CorridorRight, Location.Toilet);
+        addCorridorLink(Location.DiningRoom, Location.Kitchen);
+        addCorridorLink(Location.HallLeft, Location.DoorLeft);
+        addCorridorLink(Location.HallRight, Location.DoorRight);
+
+        isDoorOpen[Door.Left] = false;
+        isDoorOpen[Door.Right] = true;
+    }
 
     void addCorridor(Location from, Location to)
     {
@@ -22,7 +42,6 @@ public class DoorStory : Story
         addCorridor(b,a);
     }
 
-    public Dictionary<Location, List<Location>> corridors = new Dictionary<Location, List<Location>>();
 
     public List<Location> GetExits(Location location){
         try {
@@ -46,31 +65,6 @@ public class DoorStory : Story
     }
 
 
-    public override void InitStory()
-    {
-        addCorridorLink(Location.CorridorLeft, Location.FusionCove);
-        addCorridorLink(Location.CorridorLeft, Location.CorridorRight);
-        addCorridorLink(Location.CorridorLeft, Location.HallLeft);
-        addCorridorLink(Location.CorridorLeft, Location.DiningRoom);
-        addCorridorLink(Location.CorridorRight, Location.DiningRoom);
-        addCorridorLink(Location.CorridorRight, Location.HallRight);
-        addCorridorLink(Location.CorridorRight, Location.Toilet);
-        addCorridorLink(Location.DiningRoom, Location.Kitchen);
-        addCorridorLink(Location.HallLeft, Location.DoorLeft);
-        addCorridorLink(Location.HallRight, Location.DoorRight);
-
-        isDoorOpen[Door.Left] = false;
-        isDoorOpen[Door.Right] = true;
-    }
-
-
-    public class ToggleDoor : GenericAction<DoorStory, Door>
-    {
-        public override void Action(DoorStory story,Door door)
-        {
-            story.isDoorOpen[door] = !story.isDoorOpen[door];
-        }
-    }
 
     public int GetPowerUsage() {
         int powerUsage = 0;
@@ -85,18 +79,30 @@ public class DoorStory : Story
         return powerUsage;
     }
 
-    public static GenericFactory<ToggleDoor, DoorStory, Door> ToggleDoorFactory = new GenericFactory<ToggleDoor, DoorStory, Door>();
-}
+    public class ToggleDoor : GenericAction<DoorStory, Door>
+    {
+        public override void Action(DoorStory story,Door door)
+        {
+            PowerStory powerStory = story.storiesHelper.Get<PowerStory>();
 
+            if(powerStory.remainingPower<=0) {
+                return;
+            }
 
-public class Corridor {
-
-    Location from;
-    Location to;
-
-    public Corridor(Location from, Location to) {
-        this.from = from;
-        this.to = to;
+            story.isDoorOpen[door] = !story.isDoorOpen[door];
+        }
     }
-}
 
+    public static GenericFactory<ToggleDoor, DoorStory, Door> ToggleDoorFactory = new GenericFactory<ToggleDoor, DoorStory, Door>();
+
+    public class OpensDoor : GenericAction<DoorStory>
+    {
+        public override void Action(DoorStory story)
+        {
+            story.isDoorOpen[Door.Left] = true;
+            story.isDoorOpen[Door.Right] = true;
+        }
+    }
+
+    public static GenericFactory<OpensDoor, DoorStory> OpenDoorsFactory = new GenericFactory<OpensDoor, DoorStory>();
+}

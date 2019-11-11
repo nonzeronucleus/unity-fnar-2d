@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: DoorStory
   m_EditorClassIdentifier: 
   subStories: []
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}

@@ -22,6 +22,10 @@ public class PowerStory : Story
         currentUsage = BASE_USAGE + doorStory.GetPowerUsage();
 
         remainingPower = Math.Max(0, remainingPower - currentUsage);
+
+        if (remainingPower<=0) {
+            storiesHelper.Dispatch(DoorStory.OpenDoorsFactory.Get());
+        }
         // Debug.Log(remainingPower);
     }
 

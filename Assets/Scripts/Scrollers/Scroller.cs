@@ -27,32 +27,6 @@ public abstract class Scroller : MonoBehaviour
 
         maxCamRight = bgRight - camWidth;
         minCamLeft = bgLeft + camWidth;
-
-        // maxCamRight = bgRight - (camWidth);
-
-        // Debug.Log("BG "+bgCentre+","+bgWidth+","+bgWidth/2+","+bgRight);
-        // Debug.Log("Cam "+camCentre+","+camWidth+","+camWidth/2);
-        // Debug.Log(maxCamRight+","+minCamLeft);
-
-
-
-        // float camVertExtent = cam.orthographicSize;
-        // float camHorzExtent = cam.aspect * camVertExtent;
-
-        // float backgroundWidth = background.bounds.extents.x;
-        // float offset = background.transform.position.x;
-
-        // backgroundExtent = backgroundWidth - camHorzExtent;
-
-        // Debug.Log(offset+","+backgroundWidth+","+camHorzExtent+","+ cam.transform.position.x);
-
-
-        // leftMax = 0-offset/2;
-        // rightMax = backgroundExtent - offset/2;
-        // Debug.Log(leftMax+","+rightMax);
     }
-
-
-    // Start is called before the first frame update
 
 }
