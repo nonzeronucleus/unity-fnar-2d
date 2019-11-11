@@ -30,12 +30,10 @@ public class DoorStory : Story
 
             if(location == Location.DoorLeft && isDoorOpen[Door.Left]) {
                 exits.Add(Location.Office);
+                Debug.Log(exits.ToString());
             }
             else if(location == Location.DoorRight && isDoorOpen[Door.Right]) {
                 exits.Add(Location.Office);
-            }
-            else if(location == Location.Office) {
-                exits.Add(Location.DoorRight);
             }
 
             return exits;

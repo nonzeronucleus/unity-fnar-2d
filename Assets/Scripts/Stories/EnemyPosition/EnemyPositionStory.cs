@@ -37,25 +37,18 @@ public class EnemyPositionStory : Story
         Location currentLocation = characterLocations[enemy];
         DoorStory doorStory = storiesHelper.Get<DoorStory>();
         List<Location> exits = doorStory.GetExits(currentLocation);
-        // string debugStr = currentLocation.ToString()+" [";
-
-
-        // foreach(Location exit in exits) {
-        //     debugStr += exit.ToString() + ",";
-        // }
-
-        // debugStr+="]";
-
-        // Debug.Log(debugStr);
 
         int numRooms = exits.Count;
         int roomIdx = Random.Range(0, numRooms);
 
-        Dictionary<Enemy, Location> newLocations= new Dictionary<Enemy, Location>();
+        // Dictionary<Enemy, Location> newLocations= new Dictionary<Enemy, Location>();
+        Location newLocation = (Location)exits[roomIdx];
 
-        characterLocations[enemy]=(Location)exits[roomIdx];
+        characterLocations[enemy]=newLocation;
 
-        // Debug.Log("Moving "+ enemy + " to "+characterLocations[enemy]);
+        if (newLocation == Location.Office) {
+            storiesHelper.Dispatch(GameStateStory.SetGameStateFactory.Get(GameState.LOST));
+        }
     }
 
     public class MoveCharacterAction : GenericAction<EnemyPositionStory>

@@ -9,14 +9,21 @@ public class GameStateStory : Story
 {
     public GameState gameState = GameState.NOT_STARTED;
 
-    // public class CalculateUsage : GenericAction<PowerStory>
-    // {
-    //     public override void Action(PowerStory story)
-    //     {
-    //     }
-    // }
+    public override void InitStory()
+    {
+        gameState = GameState.NOT_STARTED;
+    }
 
-    // public static GenericFactory<CalculateUsage, PowerStory> CalculateUsageFactory = new GenericFactory<CalculateUsage, PowerStory>();
+
+    public class SetGameState : GenericAction<GameStateStory, GameState>
+    {
+        public override void Action(GameStateStory story, GameState newState)
+        {
+            story.gameState = newState;
+        }
+    }
+
+    public static GenericFactory<SetGameState, GameStateStory,GameState> SetGameStateFactory = new GenericFactory<SetGameState, GameStateStory,GameState>();
 }
 
 public enum GameState {
