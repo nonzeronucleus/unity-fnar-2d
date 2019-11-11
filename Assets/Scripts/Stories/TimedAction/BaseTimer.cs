@@ -18,6 +18,7 @@ public class BaseTimer : MonoBehaviour
         if (!created) {
             created = true;
             storiesHelper.Dispatch(TimedActionsStory.AddTimedActiontFactory.Get(EnemyPositionStory.MoveCharacterFactory.Get(),2, true));
+            storiesHelper.Dispatch(TimedActionsStory.AddTimedActiontFactory.Get(PowerStory.CalculateUsageFactory.Get(),1, true));
         }
     }
 

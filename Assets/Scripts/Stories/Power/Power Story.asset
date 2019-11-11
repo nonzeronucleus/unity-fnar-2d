@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Power Story
   m_EditorClassIdentifier: 
   subStories: []
-  RemainingPower: 100
-  CurrentUsage: 0
+  remainingPower: 99
+  currentUsage: 1
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}

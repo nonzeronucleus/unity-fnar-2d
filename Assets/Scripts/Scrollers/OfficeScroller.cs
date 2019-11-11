@@ -38,18 +38,18 @@ public class OfficeScroller : Scroller
         }
     }
 
-    void OnGUI() {
-        float x = Input.mousePosition.x;
-        float y = Input.mousePosition.y;
+    // void OnGUI() {
+    //     float x = Input.mousePosition.x;
+    //     float y = Input.mousePosition.y;
 
-        float width = Screen.width;
+    //     float width = Screen.width;
 
-        string msg = string.Format("x:{0},y:{1},width:{2}, {3}", x,y,width, width/3, 32);
+    //     string msg = string.Format("x:{0},y:{1},width:{2}, {3}", x,y,width, width/3, 32);
 
-        GUIStyle guiStyle = new GUIStyle();
-        guiStyle.fontSize = 60;
-        guiStyle.normal.textColor = Color.white;
+    //     GUIStyle guiStyle = new GUIStyle();
+    //     guiStyle.fontSize = 60;
+    //     guiStyle.normal.textColor = Color.white;
 
-        GUI.Label(new Rect(0,0,200,200),msg, guiStyle);
-    }
+    //     GUI.Label(new Rect(0,0,200,200),msg, guiStyle);
+    // }
 }

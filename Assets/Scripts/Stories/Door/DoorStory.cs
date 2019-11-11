@@ -32,16 +32,23 @@ public class DoorStory : Story
     public Dictionary<Location, List<Location>> corridors = new Dictionary<Location, List<Location>>();
 
     public List<Location> GetExits(Location location){
-        List<Location> exits = new List<Location>(corridors[location]);
+        try {
+            List<Location> exits = new List<Location>(corridors[location]);
 
-        if(location == Location.HallLeft && isDoorOpen[Door.Left]) {
-            exits.Add(Location.Office);
-        }
-        else if(location == Location.HallRight && isDoorOpen[Door.Right]) {
-            exits.Add(Location.Office);
-        }
+            if(location == Location.HallLeft && isDoorOpen[Door.Left]) {
+                exits.Add(Location.Office);
+            }
+            else if(location == Location.HallRight && isDoorOpen[Door.Right]) {
+                exits.Add(Location.Office);
+            }
 
-        return exits;
+            return exits;
+        }
+        catch(KeyNotFoundException e) {
+            Debug.LogException(e);
+            Debug.Log("Getting "+location);
+            return new List<Location>();
+        }
     }
 
 
@@ -55,8 +62,8 @@ public class DoorStory : Story
         addCorridorLink(Location.CorridorRight, Location.HallRight);
         addCorridorLink(Location.CorridorRight, Location.Toilet);
         addCorridorLink(Location.DiningRoom, Location.Kitchen);
-        isDoorOpen[Door.Left] = true;
-        isDoorOpen[Door.Right] = true;
+        isDoorOpen[Door.Left] = false;
+        isDoorOpen[Door.Right] = false;
     }
 
 
@@ -66,6 +73,19 @@ public class DoorStory : Story
         {
             story.isDoorOpen[door] = !story.isDoorOpen[door];
         }
+    }
+
+    public int GetPowerUsage() {
+        int powerUsage = 0;
+
+        foreach(KeyValuePair<Door, bool>doorStatus in isDoorOpen) {
+            bool isThisDoorOpen = doorStatus.Value;
+
+            if (!isThisDoorOpen) {
+                powerUsage++;
+            }
+        }
+        return powerUsage;
     }
 
     public static GenericFactory<ToggleDoor, DoorStory, Door> ToggleDoorFactory = new GenericFactory<ToggleDoor, DoorStory, Door>();

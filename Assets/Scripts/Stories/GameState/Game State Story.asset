@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c08c79668ec29453b89e4dfda8475917, type: 3}
-  m_Name: CCTV Room Story
+  m_Script: {fileID: 11500000, guid: 08f172c6e64364aa9be393a9353bc100, type: 3}
+  m_Name: Game State Story
   m_EditorClassIdentifier: 
   subStories: []
-  selectedCamera: 2
+  gameState: 0
