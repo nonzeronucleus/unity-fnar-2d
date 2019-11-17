@@ -30,6 +30,7 @@ public class TimedActionsStory : Story
 
     public void AddActionAtTick(int tick, TimeableAction actionAtTick) {
         List<TimeableAction> actionsAtTick;
+        // Debug.Log("Adding "+actionAtTick+" at "+tick);
 
         if (actions.ContainsKey(tick)){
             actionsAtTick = actions[tick];
@@ -60,12 +61,16 @@ public class TimedActionsStory : Story
         {
             // Debug.Log("X "+ story.storiesHelper.stories.GetStories().Get<DoorStory>());
             story.currentTick++;
+
+            // Debug.Log("Current tick "+story.currentTick);
+
             if (story.actions.ContainsKey(story.currentTick)){
                 List<TimeableAction> actionsAtTick = story.actions[story.currentTick];
 
                 foreach(TimeableAction actionAtTick in actionsAtTick) {
                     story.storiesHelper.Dispatch(actionAtTick.action);
                     if(actionAtTick.repeatTicks > 0 ) {
+
                         story.AddActionAtTick(story.currentTick+actionAtTick.repeatTicks, actionAtTick);
                     }
                 }

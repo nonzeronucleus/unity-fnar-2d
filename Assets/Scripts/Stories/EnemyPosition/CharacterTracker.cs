@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CharacterTracker : MonoBehaviour
 {
-     public StoriesHelper storiesHelper;
+    public StoriesHelper storiesHelper;
     public Enemy enemy;
 
     void Start()

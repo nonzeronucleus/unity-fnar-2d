@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a89a51be73ba4866ad840921e1c5d75, type: 3}
+  m_Name: SwitchesStory
+  m_EditorClassIdentifier: 
+  subStories:
+  - {fileID: 11400000, guid: 8ddb3b30e34e64b96892ff59e9d9c250, type: 2}
+  - {fileID: 11400000, guid: 393e957a1207f4d21b2bb9442f2ee6cb, type: 2}
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}

@@ -35,6 +35,16 @@ public class EnemyPositionStory : Story
 
     void MoveCharacter(Enemy enemy) {
         Location currentLocation = characterLocations[enemy];
+        SwitchesStory switchesStory = storiesHelper.Get<SwitchesStory>();
+
+        if(switchesStory.doesLocationContainAvailableSwitch(currentLocation)) {
+            Debug.Log("Has Switch");
+
+            // TODO: 50% chance of swtiching toggle
+        }
+
+
+
         DoorStory doorStory = storiesHelper.Get<DoorStory>();
         List<Location> exits = doorStory.GetExits(currentLocation);
 
