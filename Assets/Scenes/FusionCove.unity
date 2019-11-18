@@ -641,6 +641,7 @@ MonoBehaviour:
     stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   switchOnSprite: {fileID: 21300000, guid: b8a62ab5e63364a59a2a2b25e36302fb, type: 3}
   switchOffSprite: {fileID: 21300000, guid: 75a6f89cef5524e329e8b523c9934295, type: 3}
+  location: 0
 --- !u!1 &1379628596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5956568833659919367, guid: 7f2cfafed87194384a9a1dad7bb16313,
+        type: 3}
+      propertyPath: location
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7351966674242861027, guid: 7f2cfafed87194384a9a1dad7bb16313,
         type: 3}

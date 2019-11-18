@@ -1,18 +1,13 @@
-﻿using System.Collections;
-using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityStories;
 
 public class ShowCCTV : MonoBehaviour
 {
-    public void OnMouseDown()
-    {
-        SceneManager.LoadScene("CorridorRight", LoadSceneMode.Single);
-    }
+    public StoriesHelper storiesHelper;
 
     public void OnClick()
     {
-        SceneManager.LoadScene("CorridorRight", LoadSceneMode.Single);
+        storiesHelper.Dispatch(CameraStory.SwitchToCCTVFactory.Get());
     }
 
 }

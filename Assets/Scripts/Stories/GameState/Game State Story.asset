@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Game State Story
   m_EditorClassIdentifier: 
   subStories: []
-  gameState: 0
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
+  gameState: 1

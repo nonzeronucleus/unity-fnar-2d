@@ -1,15 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityStories;
 
 public abstract class Scroller : MonoBehaviour
 {
+    public StoriesHelper storiesHelper;
+
     // float moveSpeed = 5.0f;
     SpriteRenderer background;
     protected Camera cam;
     protected float maxCamRight;
     protected float minCamLeft;
     protected float bgCentre;
+    GameStateStory gameStateStory;
+
 
     void Start()
     {
@@ -27,6 +30,15 @@ public abstract class Scroller : MonoBehaviour
 
         maxCamRight = bgRight - camWidth;
         minCamLeft = bgLeft + camWidth;
+        gameStateStory = storiesHelper.Get<GameStateStory>();
     }
 
+    void LateUpdate ()
+    {
+        if(gameStateStory.gameState == GameState.PLAYING) {
+            ScrollUpdate();
+        }
+    }
+
+    protected abstract void ScrollUpdate();
 }

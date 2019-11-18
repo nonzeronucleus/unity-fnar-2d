@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityStories;
 
 
@@ -7,6 +7,8 @@ using UnityStories;
 
 public class GameStateStory : Story
 {
+    public StoriesHelper storiesHelper;
+
     public GameState gameState = GameState.NOT_STARTED;
 
     public override void InitStory()
@@ -20,6 +22,10 @@ public class GameStateStory : Story
         public override void Action(GameStateStory story, GameState newState)
         {
             story.gameState = newState;
+
+            if(newState==GameState.LOST) {
+                story.storiesHelper.Dispatch(CameraStory.SwitchToOfficeFactory.Get());
+            }
         }
     }
 

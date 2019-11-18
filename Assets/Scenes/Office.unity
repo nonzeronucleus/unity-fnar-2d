@@ -654,6 +654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09564c015dfd41e1a76ad1f500e2d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
   smoothTime: 0.1
 --- !u!1001 &354327601
 PrefabInstance:
@@ -1057,6 +1059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2021d8807c1c94800a301ff4d826f970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
 --- !u!1 &1423675577
 GameObject:
   m_ObjectHideFlags: 0

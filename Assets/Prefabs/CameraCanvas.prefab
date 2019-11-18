@@ -141,6 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e6beae6085a44d8a6fc77b2876ae5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
 --- !u!1 &2232298224838051212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2e7ca88c9e34e65bbd94806ab308e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storiesHelper:
+    stories: {fileID: 11400000, guid: aa69a9f2905b84358879ed125eaca40e, type: 2}
 --- !u!1 &2232298226330596490
 GameObject:
   m_ObjectHideFlags: 0

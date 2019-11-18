@@ -16,7 +16,7 @@ public class OfficeScroller : Scroller
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     }
 
-    void LateUpdate()
+    protected override void ScrollUpdate ()
     {
         float x = Input.mousePosition.x;
         float y = Input.mousePosition.y;
@@ -37,19 +37,4 @@ public class OfficeScroller : Scroller
             scrollCamera(maxCamRight);
         }
     }
-
-    // void OnGUI() {
-    //     float x = Input.mousePosition.x;
-    //     float y = Input.mousePosition.y;
-
-    //     float width = Screen.width;
-
-    //     string msg = string.Format("x:{0},y:{1},width:{2}, {3}", x,y,width, width/3, 32);
-
-    //     GUIStyle guiStyle = new GUIStyle();
-    //     guiStyle.fontSize = 60;
-    //     guiStyle.normal.textColor = Color.white;
-
-    //     GUI.Label(new Rect(0,0,200,200),msg, guiStyle);
-    // }
 }

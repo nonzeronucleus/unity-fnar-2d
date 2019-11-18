@@ -9,10 +9,10 @@ public class HandleCameraClick : MonoBehaviour
     public Location location;
 
     public void OnMouseDown() {
-        storiesHelper.Dispatch(CCTVRoomStory.SelectCCTVRoonFactory.Get(location));
+        storiesHelper.Dispatch(CameraStory.SelectCameraFactory.Get(location));
     }
     public void OnClick() {
-        storiesHelper.Dispatch(CCTVRoomStory.SelectCCTVRoonFactory.Get(location));
+        storiesHelper.Dispatch(CameraStory.SelectCameraFactory.Get(location));
     }
 
 

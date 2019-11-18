@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityStories;
+
 
 public class ShowOffice : MonoBehaviour
 {
-    public void OnMouseDown()
-    {
-        SceneManager.LoadScene("Office", LoadSceneMode.Single);
-    }
+    public StoriesHelper storiesHelper;
+
     public void OnClick()
     {
-        SceneManager.LoadScene("Office", LoadSceneMode.Single);
+        storiesHelper.Dispatch(CameraStory.SwitchToOfficeFactory.Get());
     }
 }

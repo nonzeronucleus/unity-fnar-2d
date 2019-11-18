@@ -51,7 +51,6 @@ public class EnemyPositionStory : Story
         int numRooms = exits.Count;
         int roomIdx = Random.Range(0, numRooms);
 
-        // Dictionary<Enemy, Location> newLocations= new Dictionary<Enemy, Location>();
         Location newLocation = (Location)exits[roomIdx];
 
         characterLocations[enemy]=newLocation;
