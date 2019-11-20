@@ -26,14 +26,13 @@ public class PowerStory : Story
         if (remainingPower<=0) {
             storiesHelper.Dispatch(DoorStory.OpenDoorsFactory.Get());
         }
-        // Debug.Log(remainingPower);
     }
 
     public class CalculateUsage : GenericAction<PowerStory>
     {
         public override void Action(PowerStory story)
         {
-            story.UpdatePower();
+//            story.UpdatePower();
         }
     }
 

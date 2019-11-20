@@ -7,15 +7,16 @@ using UnityStories;
 [CreateAssetMenu(menuName = "Unity Stories/FNAR2D/EnemyPositionStory")]
 public class EnemyPositionStory : Story
 {
+    private const int SwitchActivationPercentage = 50;
     public StoriesHelper storiesHelper;
 
     public Dictionary<Enemy, Location> characterLocations= new Dictionary<Enemy, Location>();
 
     public override void InitStory()
     {
-        characterLocations[Enemy.Porkie] = Location.CorridorRight;
-        characterLocations[Enemy.Ginger] = Location.CorridorRight;
-        characterLocations[Enemy.Merwing] = Location.CorridorRight;
+        characterLocations[Enemy.Porkie] = Location.FusionCove;
+        characterLocations[Enemy.Ginger] = Location.FusionCove;
+        characterLocations[Enemy.Merwing] = Location.FusionCove;
         characterLocations[Enemy.Minty] = Location.HallRight;
         characterLocations[Enemy.Rainba] = Location.FusionCove;
 
@@ -33,18 +34,23 @@ public class EnemyPositionStory : Story
         return enemies;
     }
 
-    void MoveCharacter(Enemy enemy) {
+    void HandleNextEnemyTurn(Enemy enemy) {
         Location currentLocation = characterLocations[enemy];
         SwitchesStory switchesStory = storiesHelper.Get<SwitchesStory>();
 
-        if(switchesStory.doesLocationContainAvailableSwitch(currentLocation)) {
-            Debug.Log("Has Switch");
-
-            // TODO: 50% chance of swtiching toggle
+        if(switchesStory.doesLocationContainAvailableSwitch(currentLocation) && Random.Range(0, 99) > SwitchActivationPercentage) {
+            TriggerDoorSwitch(enemy, currentLocation);
         }
+        else {
+            MoveEnemy(enemy, currentLocation);
+        }
+    }
 
+    void TriggerDoorSwitch(Enemy enemy, Location currentLocation){
+        storiesHelper.Dispatch(SwitchesStory.ActivateSwitchFactory.Get(currentLocation));
+    }
 
-
+    void MoveEnemy(Enemy enemy, Location currentLocation) {
         DoorStory doorStory = storiesHelper.Get<DoorStory>();
         List<Location> exits = doorStory.GetExits(currentLocation);
 
@@ -60,7 +66,7 @@ public class EnemyPositionStory : Story
         }
     }
 
-    public class MoveCharacterAction : GenericAction<EnemyPositionStory>
+    public class NextEnemyTurnAction : GenericAction<EnemyPositionStory>
     {
         public override void Action(EnemyPositionStory story)
         {
@@ -69,9 +75,9 @@ public class EnemyPositionStory : Story
             int enemyIdx = Random.Range(0, numEnemies);
 
             Enemy enemyToMove =  (Enemy)enemyIdx;
-            story.MoveCharacter(enemyToMove);
+            story.HandleNextEnemyTurn(enemyToMove);
         }
     }
 
-    public static GenericFactory<MoveCharacterAction, EnemyPositionStory> MoveCharacterFactory = new GenericFactory<MoveCharacterAction, EnemyPositionStory>();
+    public static GenericFactory<NextEnemyTurnAction, EnemyPositionStory> NextEnemyTurnFactory = new GenericFactory<NextEnemyTurnAction, EnemyPositionStory>();
 }

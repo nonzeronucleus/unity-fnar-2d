@@ -49,7 +49,6 @@ public class DoorStory : Story
 
             if(location == Location.DoorLeft && isDoorOpen[Door.Left]) {
                 exits.Add(Location.Office);
-                Debug.Log(exits.ToString());
             }
             else if(location == Location.DoorRight && isDoorOpen[Door.Right]) {
                 exits.Add(Location.Office);
@@ -95,7 +94,7 @@ public class DoorStory : Story
 
     public static GenericFactory<ToggleDoor, DoorStory, Door> ToggleDoorFactory = new GenericFactory<ToggleDoor, DoorStory, Door>();
 
-    public class OpensDoor : GenericAction<DoorStory>
+    public class OpensDoors : GenericAction<DoorStory>
     {
         public override void Action(DoorStory story)
         {
@@ -104,5 +103,16 @@ public class DoorStory : Story
         }
     }
 
-    public static GenericFactory<OpensDoor, DoorStory> OpenDoorsFactory = new GenericFactory<OpensDoor, DoorStory>();
+    public static GenericFactory<OpensDoors, DoorStory> OpenDoorsFactory = new GenericFactory<OpensDoors, DoorStory>();
+
+    public class OpensDoor : GenericAction<DoorStory, Door>
+    {
+        public override void Action(DoorStory story, Door door)
+        {
+            story.isDoorOpen[door] = true;
+        }
+    }
+
+    public static GenericFactory<OpensDoor, DoorStory, Door> OpenDoorFactory = new GenericFactory<OpensDoor, DoorStory, Door>();
+
 }

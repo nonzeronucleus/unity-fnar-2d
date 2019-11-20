@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 1356465283}
   - component: {fileID: 1356465284}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: DoorSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
