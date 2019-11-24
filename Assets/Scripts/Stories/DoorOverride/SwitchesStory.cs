@@ -10,18 +10,36 @@ public class SwitchesStory : Story
     public StoriesHelper storiesHelper;
 
     protected Dictionary<Location, KeyValuePair<int, Door>> switchMap = new Dictionary<Location, KeyValuePair<int, Door>>();
+    protected Dictionary<Door, int> doorMap = new Dictionary<Door, int>();
 
     public override void InitStory()
     {
-        switchMap.Add(Location.FusionCove, new KeyValuePair<int, Door>(0, Door.Left));
-        switchMap.Add(Location.Kitchen, new KeyValuePair<int, Door>(1, Door.Right));
+        AddSwitch(Location.FusionCove, 0, Door.Left);
+        AddSwitch(Location.Kitchen, 1, Door.Right);
+    }
+
+    void AddSwitch(Location location, int index, Door door) {
+        switchMap.Add(location, new KeyValuePair<int, Door>(index, door));
+        doorMap.Add(door, index);
     }
 
     bool IsSwitchOff(Location location) {
+        return GetSwitchState(location) == SwitchState.OFF;
+    }
+
+    public bool IsSwitchOn(Door door) {
+        int switchId = doorMap[door];
+
+        SwitchStory switchStory = (SwitchStory)subStories[switchId];
+        return switchStory.state == SwitchState.ON;
+    }
+
+
+    SwitchState GetSwitchState(Location location) {
         int switchId = switchMap[location].Key;
         SwitchStory switchStory = (SwitchStory)subStories[switchId];
 
-        return switchStory.state == SwitchState.OFF;
+        return switchStory.state ;
     }
 
     public bool doesLocationContainAvailableSwitch (Location location) {
@@ -45,10 +63,7 @@ public class SwitchesStory : Story
 
             switchStory.SetState(SwitchState.ON);
 
-            // Todo: Open matching door when triggered
             story.storiesHelper.Dispatch(DoorStory.OpenDoorFactory.Get(doorToOpen));
-
-            //AddTimedActiontFactory.Get(DectivateSwitchFactory.Get(location),20, false));
 
             story.storiesHelper.Dispatch(TimedActionsStory.AddTimedActiontFactory.Get(DectivateSwitchFactory.Get(location),20, false));
         }

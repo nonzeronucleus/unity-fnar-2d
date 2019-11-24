@@ -78,41 +78,74 @@ public class DoorStory : Story
         return powerUsage;
     }
 
-    public class ToggleDoor : GenericAction<DoorStory, Door>
+    // private void ToggleDoor(Door door) {
+    //     PowerStory powerStory = storiesHelper.Get<PowerStory>();
+
+    //     if(powerStory.remainingPower<=0) {
+    //         return;
+    //     }
+
+    //     storiesHelper.Get<SwitchesStory>();
+
+    //     isDoorOpen[door] = !isDoorOpen[door];
+    // }
+
+
+    private void OpenDoor(Door door) {
+        isDoorOpen[door]=true;
+    }
+
+    private void TryToShutDoor(Door door){
+        PowerStory powerStory = storiesHelper.Get<PowerStory>();
+        SwitchesStory switchesStory = storiesHelper.Get<SwitchesStory>();
+
+        // Door can't be closed if there's no power or the door lock switch is on
+        if(powerStory.remainingPower<=0 || switchesStory.IsSwitchOn(door)) {
+            return;
+        }
+
+
+        isDoorOpen[door]=false;
+    }
+
+    private void ToggleDoor(Door door) {
+        if (isDoorOpen[door]) {
+            TryToShutDoor(door);
+        }
+        else {
+            OpenDoor(door);
+        }
+    }
+
+    public class ToggleDoorAction : GenericAction<DoorStory, Door>
     {
         public override void Action(DoorStory story,Door door)
         {
-            PowerStory powerStory = story.storiesHelper.Get<PowerStory>();
-
-            if(powerStory.remainingPower<=0) {
-                return;
-            }
-
-            story.isDoorOpen[door] = !story.isDoorOpen[door];
+            story.ToggleDoor(door);
         }
     }
 
-    public static GenericFactory<ToggleDoor, DoorStory, Door> ToggleDoorFactory = new GenericFactory<ToggleDoor, DoorStory, Door>();
+    public static GenericFactory<ToggleDoorAction, DoorStory, Door> ToggleDoorFactory = new GenericFactory<ToggleDoorAction, DoorStory, Door>();
 
-    public class OpensDoors : GenericAction<DoorStory>
+    public class OpenDoorsAction : GenericAction<DoorStory>
     {
         public override void Action(DoorStory story)
         {
-            story.isDoorOpen[Door.Left] = true;
-            story.isDoorOpen[Door.Right] = true;
+            story.OpenDoor(Door.Left);
+            story.OpenDoor(Door.Right);
         }
     }
 
-    public static GenericFactory<OpensDoors, DoorStory> OpenDoorsFactory = new GenericFactory<OpensDoors, DoorStory>();
+    public static GenericFactory<OpenDoorsAction, DoorStory> OpenDoorsFactory = new GenericFactory<OpenDoorsAction, DoorStory>();
 
-    public class OpensDoor : GenericAction<DoorStory, Door>
+    public class OpensDoorAction : GenericAction<DoorStory, Door>
     {
         public override void Action(DoorStory story, Door door)
         {
-            story.isDoorOpen[door] = true;
+            story.OpenDoor(door);
         }
     }
 
-    public static GenericFactory<OpensDoor, DoorStory, Door> OpenDoorFactory = new GenericFactory<OpensDoor, DoorStory, Door>();
+    public static GenericFactory<OpensDoorAction, DoorStory, Door> OpenDoorFactory = new GenericFactory<OpensDoorAction, DoorStory, Door>();
 
 }

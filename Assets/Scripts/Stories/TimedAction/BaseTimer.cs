@@ -22,6 +22,7 @@ public class BaseTimer : MonoBehaviour
             created = true;
             storiesHelper.Dispatch(TimedActionsStory.AddTimedActiontFactory.Get(EnemyPositionStory.NextEnemyTurnFactory.Get(),2, true));
             storiesHelper.Dispatch(TimedActionsStory.AddTimedActiontFactory.Get(PowerStory.CalculateUsageFactory.Get(),1, true));
+            storiesHelper.Dispatch(TimedActionsStory.AddTimedActiontFactory.Get(TimeStory.UpdateTimeFactory.Get(),1, true));
             storiesHelper.Dispatch(GameStateStory.SetGameStateFactory.Get(GameState.PLAYING));
         }
     }
